@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+}
+
+header.main-header {
+    background-color: #481380;
+    color: white;
+    padding: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+header.main-header h1 {
+    font-size: 3rem;
+}
+
+.main {
+    width: calc(100% - (2 * 2rem));
+    margin: 2rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.main .news-card {
+    width: 400px;
+    height: 400px;
+    margin: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    overflow: hidden;
+}
+
+.main .news-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover !important;
+    background-position: center !important;
+    transform-origin: center;
+    transition: transform ease 0.3s, filter ease 0.3s;
+}
+
+.main .news-article {
+    padding: 1rem;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: height ease 0.3s;
+}
+
+.main .news-card:hover .news-article {
+    height: 45%;
+}
+
+.main .news-card:hover .news-image {
+    transform: scale(1.1);
+    filter: blur(2px);
+}
+
+.news-card .news-title {
+    font-size: 1.6rem;
+    padding: 0.5rem 0;
+    text-align: left;
+}
+
+.main .news-article .news-description {
+    font-size: 1.4rem;
+    text-align: left;
+    color: #dddddd;
+}
+
+.brand a {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 1.5rem;
+}
+
+.e404 {
+    width: 100%;
+    height: calc(100vh - 10rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+}
+
+.e404 h1 {
+    font-size: 6.4rem;
+    color: #481380;
+}
+
+.e404 p {
+    font-size: 3.2rem;
+}
