@@ -65,11 +65,15 @@ header.main-header h1 {
     left: 0;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.3);
-    transition: height ease 0.3s;
+    transition: height ease-in-out 0.3s, background-color ease-in-out 0.3s;
 }
 
 .main .news-card:hover .news-article {
     height: 45%;
+}
+
+.main .news-card .news-article:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .main .news-card:hover .news-image {
@@ -81,12 +85,14 @@ header.main-header h1 {
     font-size: 1.6rem;
     padding: 0.5rem 0;
     text-align: left;
+    transition: color ease-in-out 0.3s;
 }
 
 .main .news-article .news-description {
     font-size: 1.4rem;
     text-align: left;
     color: #dddddd;
+    transition: color ease-in-out 0.3s;
 }
 
 .brand a {
@@ -119,6 +125,38 @@ header.main-header h1 {
 
 .e404 p {
     font-size: 3.2rem;
+}
+
+.news-article:hover .news-description {
+    color: transparent !important;
+}
+
+.news-article:hover .news-title {
+    color: transparent !important;
+}
+
+.news-article:hover .news-description::after {
+    content: attr(attr-title);
+    opacity: 0;
+    display: block;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    position: absolute;
+    padding: 1rem;
+    bottom: 0rem;
+    left: 0;
+    color: #ffffff;
+    animation: appear 0.3s 0.3s forwards;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @media only screen and (max-width: 600px) {

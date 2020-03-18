@@ -6,6 +6,7 @@ fetch('/news').then((response) => {
 
             let title = article.title;
             let description = article.description === null || article.description.length < 75 ? article.description : `${article.description.slice(0, 75).trim()}...`;
+            let descriptionTitle = article.description != null ? article.description : article.content;
 
             if (description === null || description.length === 0) {
                 description = article.content === null || article.content.length < 75 ? article.content : `${article.content.slice(0, 75).trim()}...`;
@@ -13,7 +14,7 @@ fetch('/news').then((response) => {
                 description = description.charAt(description.length - 1) != '.' ? description += '.' : description;
             }
 
-            const element = newsCard(title, article.urlToImage, description);
+            const element = newsCard(title, article.urlToImage, description, descriptionTitle);
 
             element.addEventListener('click', () => {
                 window.location.href = article.url;
@@ -26,7 +27,7 @@ fetch('/news').then((response) => {
 
 });
 
-const newsCard = (titleText, imageUrl, descriptionText) => {
+const newsCard = (titleText, imageUrl, descriptionText, descriptionTitle) => {
     // Create Elements
     const card = document.createElement('div');
     const header = document.createElement('header');
@@ -46,6 +47,7 @@ const newsCard = (titleText, imageUrl, descriptionText) => {
     // Add Texts and Image Source
     h1.innerText = titleText;
     description.innerText = descriptionText;
+    description.setAttribute('attr-title', descriptionTitle);
     //img.src = imageUrl;
     background.style.background = imageUrl === null ? `#cccccc` : `#cccccc url('${imageUrl}')`;
 
