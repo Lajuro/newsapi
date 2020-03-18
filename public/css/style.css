@@ -19,6 +19,7 @@ header.main-header {
     left: 0;
     width: 100%;
     z-index: 1;
+    border-bottom: 3.5rem solid #ffffff;
 }
 
 header.main-header h1 {
@@ -118,4 +119,18 @@ header.main-header h1 {
 
 .e404 p {
     font-size: 3.2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .main .news-article {
+        height: 50%;
+    }
+
+    .main .news-card:hover .news-article {
+        height: 50%;
+    }
+
+    .main .news-card {
+        height: 450px;
+    }
 }

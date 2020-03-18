@@ -2,17 +2,16 @@ const main = document.querySelector('.main');
 
 fetch('/news').then((response) => {
     response.json().then((data) => {
-        console.log(data.articles);
         data.articles.forEach(article => {
 
             let title = article.title;
-            let description = article.description.length > 75 ? `${article.description.slice(0, 75).trim()}...` : article.description;
+            let description = article.description === null || article.description.length < 75 ? article.description : `${article.description.slice(0, 75).trim()}...`;
 
-            if (description.length === 0)
-            description = article.content.length > 75 ? `${article.content.slice(0, 75).trim()}...` : article.content;
-            
-
-            description = description.charAt(description.length - 1) != '.' ? description += '.' : description;
+            if (description === null || description.length === 0) {
+                description = article.content === null || article.content.length < 75 ? article.content : `${article.content.slice(0, 75).trim()}...`;
+            } else {
+                description = description.charAt(description.length - 1) != '.' ? description += '.' : description;
+            }
 
             const element = newsCard(title, article.urlToImage, description);
 
@@ -48,7 +47,7 @@ const newsCard = (titleText, imageUrl, descriptionText) => {
     h1.innerText = titleText;
     description.innerText = descriptionText;
     //img.src = imageUrl;
-    background.style.background = `#cccccc url('${imageUrl}')`
+    background.style.background = imageUrl === null ? `#cccccc` : `#cccccc url('${imageUrl}')`;
 
     // Append Elements
     card.appendChild(background);
